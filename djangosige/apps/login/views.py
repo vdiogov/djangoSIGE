@@ -241,8 +241,14 @@ class EditarPerfilView(UpdateView):
         try:
             empresa_instance = MinhaEmpresa.objects.get(
                 m_usuario=self.object.id)
-            minha_empresa_form = MinhaEmpresaForm(
-                instance=empresa_instance, prefix='m_empresa_form')
+            if self.request.user.has_perm('change_empresa'):
+                minha_empresa_form = MinhaEmpresaForm(
+                    instance=empresa_instance, prefix='m_empresa_form')
+            else:
+                minha_empresa_form = MinhaEmpresaForm(
+                    instance=empresa_instance, prefix='m_empresa_form')
+                minha_empresa_form.fields['m_empresa'].widget.attrs['disabled'] = 'disabled'
+
         except MinhaEmpresa.DoesNotExist:
             minha_empresa_form = MinhaEmpresaForm(prefix='m_empresa_form')
 

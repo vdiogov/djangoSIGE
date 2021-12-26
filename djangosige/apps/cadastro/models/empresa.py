@@ -59,7 +59,13 @@ def logo_post_delete_handler(sender, instance, **kwargs):
 
 
 class MinhaEmpresa(models.Model):
-    m_empresa = models.ForeignKey(
-        Empresa, on_delete=models.CASCADE, related_name='minha_empresa', blank=True, null=True)
     m_usuario = models.ForeignKey(
-        Usuario, on_delete=models.CASCADE, related_name='empresa_usuario')
+        Usuario, on_delete=models.CASCADE, related_name='empresa_usuario', verbose_name='Usuario')
+
+    m_empresa = models.ForeignKey(
+        Empresa, on_delete=models.CASCADE, related_name='minha_empresa', blank=True, null=True, verbose_name='Empresa')
+    
+    class Meta:
+        verbose_name = 'Usuario da Empresa'
+        verbose_name_plural = 'Usuarios por Empresas'
+    

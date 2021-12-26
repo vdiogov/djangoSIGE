@@ -93,7 +93,7 @@
                     {%endif%}
                 </div>
                 <div class="info-container">
-                    <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{request.user.username}} {% if request.user.is_superuser %}(Admin){%endif%}</div>
+                    <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{request.user.username}} {% if request.user.is_superuser %}(Admin){% endif %}</div>
                     {% if user_empresa %}<div class="email">{{user_empresa}}</div>{% endif %}
                     <div class="email">{{request.user.email}}</div>
 
