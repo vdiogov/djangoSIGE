@@ -20,8 +20,7 @@ DEBUG = config('DEBUG', default=False, cast=bool)
 ALLOWED_HOSTS = ALLOWED_HOSTS = [
   'localhost',
   '127.0.0.1',
-  '10.41.30.19',
-  'mywebsite.com']
+  'gunicorn']
   
 if not DEFAULT_DATABASE_URL:
     DEFAULT_DATABASE_URL = 'sqlite:///' + os.path.join(APP_ROOT, 'db.sqlite3')
