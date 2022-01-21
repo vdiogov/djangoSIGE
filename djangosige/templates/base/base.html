@@ -3,6 +3,7 @@
 
 <head>
     {% load static %}
+    {% load checklist %}
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -122,28 +123,40 @@
                             <span>Página Inicial</span>
                         </a>
                     </li>
-
+                   
                     <li>
+                        {% if user|check_cadastro %}
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">&#xE85D;</i>
                             <span>Cadastro</span>
-                        </a>
+                        </a> 
+                        {% endif %}
+
                         <ul class="ml-menu">
+
+                            {% if cliente in user.user_permissions.all or user.is_superuser %}
                             <li>
                                 <a href="{% url 'cadastro:listaclientesview' %}">
                                     Clientes
                                 </a>
                             </li>
+                            {% endif %}
+
+                            {% if fornecedor in user.user_permissions.all or user.is_superuser %}
                             <li>
                                 <a href="{% url 'cadastro:listafornecedoresview' %}">
                                     Fornecedores
                                 </a>
                             </li>
+                            {% endif %}
+
+                            {% if produto in user.user_permissions.all or user.is_superuser %}
                             <li>
                                 <a href="{% url 'cadastro:listaprodutosview' %}">
                                     Produtos
                                 </a>
                             </li>
+                            {% endif %}
                             <!--
                             <li>
                                 <a href="javascript:void(0);">
@@ -151,39 +164,54 @@
                                 </a>
                             </li>
                             -->
+                            {% if empresa in user.user_permissions.all or user.is_superuser %}
                             <li>
                                 <a href="{% url 'cadastro:listaempresasview' %}">
                                     Empresas
                                 </a>
                             </li>
+                            {% endif %}
+
+                            {% if transportadora in user.user_permissions.all or user.is_superuser %}
                             <li>
                                 <a href="{% url 'cadastro:listatransportadorasview' %}">
                                     Transportadoras
                                 </a>
                             </li>
+                            {% endif %}
+
                             <li>
                                 <a href="javascript:void(0);" class="menu-toggle">
                                     Outros
                                 </a>
                                 <ul class="ml-menu">
+
+                                    {% if categoria in user.user_permissions.all or user.is_superuser %}
                                     <li>
                                         <a href="{% url 'cadastro:listacategoriasview' %}">
                                             Categorias
                                         </a>
                                     </li>
+                                    {% endif %}
+
+                                    {% if unidade in user.user_permissions.all or user.is_superuser %}
                                     <li>
                                         <a href="{% url 'cadastro:listaunidadesview' %}">
                                             Unidades
                                         </a>
                                     </li>
+                                    {% endif %}
+
+                                    {% if marca in user.user_permissions.all or user.is_superuser %}
                                     <li>
                                         <a href="{% url 'cadastro:listamarcasview' %}">
                                             Marcas
                                         </a>
                                     </li>
+                                    {% endif %}
+
                                 </ul>
                             </li>
-
                         </ul>
                     </li>
 

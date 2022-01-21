@@ -17,6 +17,9 @@ class ProdutoEstocado(models.Model):
     quantidade = models.DecimalField(max_digits=13, decimal_places=2, validators=[
                                      MinValueValidator(Decimal('0.00'))], default=Decimal('0.00'))
 
+    def __str__(self):
+        return u'%s' % self.produto
+
 
 class LocalEstoque(models.Model):
     descricao = models.CharField(max_length=1055)
