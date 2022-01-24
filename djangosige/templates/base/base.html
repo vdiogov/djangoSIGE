@@ -125,6 +125,7 @@
                     </li>
                    
                     <li>
+                    
                         {% if user|check_cadastro %}
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">&#xE85D;</i>
@@ -134,7 +135,7 @@
 
                         <ul class="ml-menu">
 
-                            {% if cliente in user.user_permissions.all or user.is_superuser %}
+                            {% if 'cadastro.view_cliente' in user.get_all_permissions or user.is_superuser %}
                             <li>
                                 <a href="{% url 'cadastro:listaclientesview' %}">
                                     Clientes
@@ -142,7 +143,7 @@
                             </li>
                             {% endif %}
 
-                            {% if fornecedor in user.user_permissions.all or user.is_superuser %}
+                            {% if 'cadastro.view_fornecedor' in user.get_all_permissions or user.is_superuser %}
                             <li>
                                 <a href="{% url 'cadastro:listafornecedoresview' %}">
                                     Fornecedores
@@ -150,7 +151,7 @@
                             </li>
                             {% endif %}
 
-                            {% if produto in user.user_permissions.all or user.is_superuser %}
+                            {% if 'cadastro.view_produto' in user.get_all_permissions or user.is_superuser %}
                             <li>
                                 <a href="{% url 'cadastro:listaprodutosview' %}">
                                     Produtos
@@ -164,7 +165,7 @@
                                 </a>
                             </li>
                             -->
-                            {% if empresa in user.user_permissions.all or user.is_superuser %}
+                            {% if 'cadastro.view_empresa' in user.get_all_permissions or user.is_superuser %}
                             <li>
                                 <a href="{% url 'cadastro:listaempresasview' %}">
                                     Empresas
@@ -172,7 +173,7 @@
                             </li>
                             {% endif %}
 
-                            {% if transportadora in user.user_permissions.all or user.is_superuser %}
+                            {% if 'cadastro.view_transportadora' in user.get_all_permissions or user.is_superuser %}
                             <li>
                                 <a href="{% url 'cadastro:listatransportadorasview' %}">
                                     Transportadoras
@@ -181,12 +182,17 @@
                             {% endif %}
 
                             <li>
+
+                                
+                                {% if user|check_cadastro_outros %}
                                 <a href="javascript:void(0);" class="menu-toggle">
                                     Outros
                                 </a>
+                                {% endif %}
+
                                 <ul class="ml-menu">
 
-                                    {% if categoria in user.user_permissions.all or user.is_superuser %}
+                                    {% if 'cadastro.view_categoria' in user.get_all_permissions or user.is_superuser %}
                                     <li>
                                         <a href="{% url 'cadastro:listacategoriasview' %}">
                                             Categorias
@@ -194,7 +200,7 @@
                                     </li>
                                     {% endif %}
 
-                                    {% if unidade in user.user_permissions.all or user.is_superuser %}
+                                    {% if unidade in user.get_all_permissions or user.is_superuser %}
                                     <li>
                                         <a href="{% url 'cadastro:listaunidadesview' %}">
                                             Unidades
@@ -202,7 +208,7 @@
                                     </li>
                                     {% endif %}
 
-                                    {% if marca in user.user_permissions.all or user.is_superuser %}
+                                    {% if marca in user.get_all_permissions or user.is_superuser %}
                                     <li>
                                         <a href="{% url 'cadastro:listamarcasview' %}">
                                             Marcas
@@ -216,126 +222,193 @@
                     </li>
 
                     <li>
+
+                        {% if user|check_vendas %}
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">&#xE54E;</i>
                             <span>Vendas</span>
                         </a>
+                        {% endif %}
                         <ul class="ml-menu">
+
+                            {% if orcamentovenda in user.get_all_permissions or user.is_superuser %}
                             <li>
                                 <a href="{% url 'vendas:listaorcamentovendaview' %}">
                                     Orçamentos de venda
                                 </a>
                             </li>
+                            {% endif %}
 
+                            {% if pedidovenda in user.get_all_permissions or user.is_superuser %}
                             <li>
                                 <a href="{% url 'vendas:listapedidovendaview' %}">
                                     Pedidos de venda
                                 </a>
                             </li>
+                            {% endif %}
 
+                            {% if condicaopagamento in user.get_all_permissions or user.is_superuser %}
                             <li>
                                 <a href="{% url 'vendas:listacondicaopagamentoview' %}">
                                     Condições de pagamento
                                 </a>
                             </li>
+                            {% endif %}
 
                         </ul>
                     </li>
 
                     <li>
+
+                        {% if user|check_compras %}
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">&#xE8CC;</i>
                             <span>Compras</span>
                         </a>
+                        {% endif %}
+
                         <ul class="ml-menu">
+
+                            {% if orcamentocompra in user.get_all_permissions or user.is_superuser %}
                             <li>
                                 <a href="{% url 'compras:listaorcamentocompraview' %}">
                                     Orçamentos de Compra
                                 </a>
                             </li>
+                            {% endif %}
+
+                            {% if pedidocompra in user.get_all_permissions or user.is_superuser %}
                             <li>
                                 <a href="{% url 'compras:listapedidocompraview' %}">
                                     Pedidos de Compra
                                 </a>
                             </li>
+                            {% endif %}
+                            
+                            {% if condicaopagamento in user.get_all_permissions or user.is_superuser %}
                             <li>
                                 <a href="{% url 'vendas:listacondicaopagamentoview' %}">
                                     Condições de pagamento
                                 </a>
                             </li>
+                            {% endif %}
 
                         </ul>
                     </li>
 
 
                     <li>
+                        
+                        {% if user|check_fiscal %}
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">&#xE8B0;</i>
                             <span>Fiscal</span>
                         </a>
+                        {% endif %}
+
                         <ul class="ml-menu">
                             <li>
+
+                                {% if user|check_nf %}
                                 <a href="javascript:void(0);" class="menu-toggle">
                                     Nota Fiscal
                                 </a>
+                                {% endif %}
+
                                 <ul class="ml-menu">
+
+                                    {% if notafiscalsaida in user.get_all_permissions or user.is_superuser %}
                                     <li>
                                         <a href="{% url 'fiscal:listanotafiscalsaidaview' %}">
                                             Notas Fiscais
                                         </a>
                                     </li>
+                                    {% endif %}
+
+                                    {% if notafiscalentrada in user.get_all_permissions or user.is_superuser %}
                                     <li>
                                         <a href="{% url 'fiscal:listanotafiscalentradaview' %}">
                                             Notas de Fornecedores
                                         </a>
                                     </li>
+                                    {% endif %}
+
+                                    {% if configurar_nfe in user.get_all_permissions or user.is_superuser %}
                                     <li>
                                         <a href="{% url 'fiscal:configuracaonotafiscal' %}">
                                             Configuração NF-e
                                         </a>
                                     </li>
+                                    {% endif %}
+
                                 </ul>
                             </li>
+
+                            {% if naturezaoperacao in user.get_all_permissions or user.is_superuser %}
                             <li>
                                 <a href="{% url 'fiscal:listanaturezaoperacaoview' %}">
                                     Natureza da operação
                                 </a>
                             </li>
+                            {% endif %}
+
+                            {% if grupofiscal in user.get_all_permissions or user.is_superuser %}
                             <li>
                                 <a href="{% url 'fiscal:listagrupofiscalview' %}">
                                     Grupo fiscal
                                 </a>
                             </li>
+                            {% endif %}
+
                             <li>
+                                {% if user|check_sefaz %}
                                 <a href="javascript:void(0);" class="menu-toggle">
                                     Comunicação SEFAZ
                                 </a>
+                                {% endif %}
+
                                 <ul class="ml-menu">
+                                    
+                                    {% if consultar_cadastro in user.get_all_permissions or user.is_superuser %}
                                     <li>
                                         <a href="{% url 'fiscal:consultarcadastro' %}">
                                             Consultar cadastro
                                         </a>
                                     </li>
+                                    {% endif %}
+
+                                    {% if inutilizar_notafiscal in user.get_all_permissions or user.is_superuser %}
                                     <li>
                                         <a href="{% url 'fiscal:inutilizarnotas' %}">
                                             Inutilizar notas
                                         </a>
                                     </li>
+                                    {% endif %}
+
+                                    {% if consultar_notafiscal in user.get_all_permissions or user.is_superuser %}
                                     <li>
                                         <a href="{% url 'fiscal:consultarnota' %}">
                                             Consultar nota
                                         </a>
                                     </li>
+                                    {% endif %}
+
+                                    {% if baixar_notafiscal in user.get_all_permissions or user.is_superuser %}
                                     <li>
                                         <a href="{% url 'fiscal:baixarnota' %}">
                                             Baixar nota
                                         </a>
                                     </li>
+                                    {% endif %}
+
+                                    {% if manifestacao_destinatario in user.get_all_permissions or user.is_superuser %}
                                     <li>
                                         <a href="{% url 'fiscal:manifestacaodestinatario' %}">
                                             Manifestação do destinatário
                                         </a>
                                     </li>
+                                    {% endif %}
+
                                 </ul>
                             </li>
 
@@ -343,61 +416,94 @@
                     </li>
 
                     <li>
+
+                        {% if user|check_financeiro %}
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">&#xE227;</i>
                             <span>Financeiro</span>
                         </a>
+                        {% endif %}
+
                         <ul class="ml-menu">
+
+                            {% if planocontasgrupo in user.get_all_permissions or user.is_superuser %}
                             <li>
                                 <a href="{% url 'financeiro:planocontasview' %}">
                                     Plano de contas
                                 </a>
                             </li>
+                            {% endif %}
+
+                            {% if acesso_fluxodecaixa in user.get_all_permissions or user.is_superuser %}
                             <li>
                                 <a href="{% url 'financeiro:fluxodecaixaview' %}">
                                     Fluxo de caixa
                                 </a>
                             </li>
+                            {% endif %}
 
+                            {% if lancamento in user.get_all_permissions or user.is_superuser %}
                             <li>
                                 <a href="{% url 'financeiro:listalancamentoview' %}">
                                     Lançamentos
                                 </a>
                             </li>
+                            {% endif %}
 
                             <li>
+                            
+                                {% if user|check_fin_entradas %}
                                 <a href="javascript:void(0);" class="menu-toggle">
                                     Entradas
                                 </a>
+                                {% endif %}
                                 <ul class="ml-menu">
+
+                                    {% if all_entradas in user.get_all_permissions or user.is_superuser %}
                                     <li>
                                         <a href="{% url 'financeiro:listarecebimentosview' %}">
                                             Recebimentos
                                         </a>
                                     </li>
+                                    {% endif %}
+
+                                    {% if all_contasreceber in user.get_all_permissions or user.is_superuser %}
                                     <li>
                                         <a href="{% url 'financeiro:listacontareceberview' %}">
                                             Contas a receber
                                         </a>
                                     </li>
+                                    {% endif %}
+
                                 </ul>
                             </li>
 
                             <li>
+
+                                {% if user|check_fin_saidas %}
                                 <a href="javascript:void(0);" class="menu-toggle">
                                     Saidas
                                 </a>
+                                {% endif %}
+                                
                                 <ul class="ml-menu">
+
+                                    {% if all_contasreceber in user.get_all_permissions or user.is_superuser %}
                                     <li>
                                         <a href="{% url 'financeiro:listapagamentosview' %}">
                                             Pagamentos
                                         </a>
                                     </li>
+                                    {% endif %}
+
+                                    {% if all_contaspagar in user.get_all_permissions or user.is_superuser %}
                                     <li>
                                         <a href="{% url 'financeiro:listacontapagarview' %}">
                                             Contas a pagar
                                         </a>
                                     </li>
+                                    {% endif %}
+
                                 </ul>
                             </li>
 
@@ -405,46 +511,74 @@
                     </li>
 
                     <li>
+
+                        {% if user|check_estoque %}
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">&#xE1BD;</i>
                             <span>Estoque</span>
                         </a>
+                        {% endif %}
+
                         <ul class="ml-menu">
+
+                            {% if consultar_estoque in user.get_all_permissions or user.is_superuser %}
                             <li>
                                 <a href="{% url 'estoque:consultaestoqueview' %}">
                                     Consultar estoque
                                 </a>
                             </li>
+                            {% endif %}
+
+                            {% if localestoque in user.get_all_permissions or user.is_superuser %}
                             <li>
                                 <a href="{% url 'estoque:listalocalview' %}">
                                     Locais de estoque
                                 </a>
                             </li>
+                            {% endif %}
+
                             <li>
+                                
+                                {% if user|check_movimenta_estoque %}
                                 <a href="javascript:void(0);" class="menu-toggle">
                                     Movimentações de estoque
                                 </a>
+                                {% endif %}
+
                                 <ul class="ml-menu">
+
+                                    {% if movimentoestoque in user.get_all_permissions or user.is_superuser %}
                                     <li>
                                         <a href="{% url 'estoque:listamovimentoestoqueview' %}">
                                             Todas movimentações
                                         </a>
                                     </li>
+                                    {% endif %}
+
+                                    {% if all_entradas in user.get_all_permissions or user.is_superuser %}
                                     <li>
                                         <a href="{% url 'estoque:listaentradasestoqueview' %}">
                                             Entradas
                                         </a>
                                     </li>
+                                    {% endif %}
+
+                                    {% if all_saidas in user.get_all_permissions or user.is_superuser %}
                                     <li>
                                         <a href="{% url 'estoque:listasaidasestoqueview' %}">
                                             Saídas
                                         </a>
                                     </li>
+                                    {% endif %}
+
+                                    {% if all_transferencias in user.get_all_permissions or user.is_superuser %}
                                     <li>
                                         <a href="{% url 'estoque:listatransferenciasestoqueview' %}">
                                             Transferências
                                         </a>
                                     </li>
+                                    {% endif %}
+
                                 </ul>
                             </li>
                         </ul>
