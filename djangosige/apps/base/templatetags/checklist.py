@@ -29,7 +29,7 @@ def check_vendas(user):
 
 @register.filter()
 def check_compras(user):
-    perms = ['compras.view_pedidocompra', 'compras.view_orcamentocompra', 'vendas.view_condicaopagamento']
+    perms = ['compras.view_pedidocompra', 'compras.view_orcamentocompra']
     check = any(item in perms for item in user.get_all_permissions())
     if check or user.is_superuser:
         return True
@@ -62,7 +62,7 @@ def check_sefaz(user):
 
 @register.filter()
 def check_financeiro(user):
-    perms = ['financeiro.view_planocontasgrupo', 'financeiro.view_lancamento']
+    perms = ['financeiro.acesso_fluxodecaixa','financeiro.view_planocontasgrupo', 'financeiro.view_lancamento']
     check = any(item in perms for item in user.get_all_permissions())
     if check or user.is_superuser:
         return True

@@ -284,14 +284,6 @@
                                 </a>
                             </li>
                             {% endif %}
-                            
-                            {% if 'vendas.view_condicaopagamento' in user.get_all_permissions or user.is_superuser %}
-                            <li>
-                                <a href="{% url 'vendas:listacondicaopagamentoview' %}">
-                                    Condições de pagamento
-                                </a>
-                            </li>
-                            {% endif %}
 
                         </ul>
                     </li>
@@ -434,7 +426,7 @@
                             </li>
                             {% endif %}
 
-                            {% if 'financeiro.view_lancamento' in user.get_all_permissions or user.is_superuser %}
+                            {% if 'financeiro.acesso_fluxodecaixa' in user.get_all_permissions or user.is_superuser %}
                             <li>
                                 <a href="{% url 'financeiro:fluxodecaixaview' %}">
                                     Fluxo de caixa
@@ -451,9 +443,11 @@
                             {% endif %}
 
                             <li>
+                                {% if 'financeiro.view_lancamento' in user.get_all_permissions or user.is_superuser %}
                                 <a href="javascript:void(0);" class="menu-toggle">
                                     Entradas
                                 </a>
+                                {% endif %}
                                 <ul class="ml-menu">
 
                                     <li>
@@ -471,9 +465,11 @@
                             </li>
 
                             <li>
+                                {% if 'financeiro.view_lancamento' in user.get_all_permissions or user.is_superuser %}
                                 <a href="javascript:void(0);" class="menu-toggle">
                                     Saidas
                                 </a>
+                                {% endif %}
                                 <ul class="ml-menu">
                                     <li>
                                         <a href="{% url 'financeiro:listapagamentosview' %}">
