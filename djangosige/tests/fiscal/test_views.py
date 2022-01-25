@@ -248,6 +248,6 @@ class FiscalConfiguracaoNotaFiscalViewTestCase(BaseTestCase):
         self.assertEqual(response.status_code, 200)
 
         # Testar permissao
-        permission_codename = 'configurar_nfe'
+        permission_codename = 'configurarnfe'
         self.check_user_get_permission(
             self.url, permission_codename=permission_codename)

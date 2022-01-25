@@ -4,7 +4,7 @@ register = template.Library()
 
 @register.filter()
 def check_cadastro(user):
-    perms = ['cadastro.view_cliente', 'cadastro.view_fornecedor', 'cadastro.view_produto', 'cadastro.view_empresa', 'cadastro.view_transportadora', 'unidade', 'marca', 'cadastro.view_categoria']
+    perms = ['cadastro.view_cliente', 'cadastro.view_fornecedor', 'cadastro.view_produto', 'cadastro.view_empresa', 'cadastro.view_transportadora', 'cadastro.view_marca', 'cadastro.view_unidade', 'cadastro.view_categoria']
     check = any(item in perms for item in user.get_all_permissions())
     print(user.get_all_permissions())
     if check or user.is_superuser:
@@ -13,7 +13,7 @@ def check_cadastro(user):
 
 @register.filter()
 def check_cadastro_outros(user):
-    perms = ['cadastro.view_categoria', 'unidade', 'marca']
+    perms = ['cadastro.view_categoria', 'cadastro.view_marca', 'cadastro.view_unidade']
     check = any(item in perms for item in user.get_all_permissions())
     if check or user.is_superuser:
         return True
@@ -21,7 +21,7 @@ def check_cadastro_outros(user):
 
 @register.filter()
 def check_vendas(user):
-    perms = ['condicaopagamento', 'pedidovenda', 'orcamentovenda']
+    perms = ['vendas.view_pedidovenda', 'vendas.view_orcamentovenda', 'vendas.view_condicaopagamento']
     check = any(item in perms for item in user.get_all_permissions())
     if check or user.is_superuser:
         return True
@@ -29,7 +29,7 @@ def check_vendas(user):
 
 @register.filter()
 def check_compras(user):
-    perms = ['orcamentocompra', 'pedidocompra', 'condicaopagamento']
+    perms = ['compras.view_pedidocompra', 'compras.view_orcamentocompra', 'vendas.view_condicaopagamento']
     check = any(item in perms for item in user.get_all_permissions())
     if check or user.is_superuser:
         return True
@@ -37,7 +37,7 @@ def check_compras(user):
 
 @register.filter()
 def check_fiscal(user):
-    perms = ['notafiscalsaida', 'notafiscalentrada', 'configurar_nfe','consultar_cadastro', 'inutilizar_notafiscal', 'consultar_notafiscal', 'naturezaoperacao', 'grupofiscal']
+    perms = ['fiscal.view_notafiscalentrada', 'fiscal.view_notafiscalsaida', 'fiscal.view_notafiscalentrada', 'fiscal.view_notafiscalsaida', 'fiscal.configurarnfe', 'fiscal.view_naturezaoperacao', 'fiscal.view_grupofiscal''fiscal.consultar_cadastro', 'fiscal.inutilizar_notafiscal', 'fiscal.consultar_notafiscal', 'fiscal.baixar_notafiscal', 'fiscal.manifestacao_destinatario']
     check = any(item in perms for item in user.get_all_permissions())
     if check or user.is_superuser:
         return True
@@ -45,7 +45,7 @@ def check_fiscal(user):
 
 @register.filter()
 def check_nf(user):
-    perms = ['notafiscalsaida', 'notafiscalentrada', 'configurar_nfe']
+    perms = ['fiscal.view_notafiscalentrada', 'fiscal.view_notafiscalsaida', 'fiscal.configurarnfe']
     check = any(item in perms for item in user.get_all_permissions())
     if check or user.is_superuser:
         return True
@@ -53,7 +53,7 @@ def check_nf(user):
 
 @register.filter()
 def check_sefaz(user):
-    perms = ['consultar_cadastro', 'inutilizar_notafiscal', 'consultar_notafiscal']
+    perms = ['fiscal.consultar_cadastro', 'fiscal.inutilizar_notafiscal', 'fiscal.consultar_notafiscal', 'fiscal.baixar_notafiscal', 'fiscal.manifestacao_destinatario']
     check = any(item in perms for item in user.get_all_permissions())
     if check or user.is_superuser:
         return True
@@ -62,31 +62,16 @@ def check_sefaz(user):
 
 @register.filter()
 def check_financeiro(user):
-    perms = ['planocontasgrupo', 'acesso_fluxodecaixa', 'lancamento', 'all_entradas', 'all_contasreceber','all_contaspagar']
+    perms = ['financeiro.view_planocontasgrupo', 'financeiro.view_lancamento']
     check = any(item in perms for item in user.get_all_permissions())
     if check or user.is_superuser:
         return True
     return False
 
-@register.filter()
-def check_fin_entradas(user):
-    perms = ['all_entradas', 'all_contasreceber']
-    check = any(item in perms for item in user.get_all_permissions())
-    if check or user.is_superuser:
-        return True
-    return False
-    
-@register.filter()
-def check_fin_saidas(user):
-    perms = ['all_contasreceber', 'all_contaspagar']
-    check = any(item in perms for item in user.get_all_permissions())
-    if check or user.is_superuser:
-        return True
-    return False
 
 @register.filter()
 def check_estoque(user):
-    perms = ['consultar_estoque', 'localestoque', 'movimentoestoque','all_entradas', 'all_saidas', 'all_transferencias' ]
+    perms = ['estoque.consultarestoque', 'estoque.view_localestoque', 'estoque.view_movimentoestoque']
     check = any(item in perms for item in user.get_all_permissions())
     if check or user.is_superuser:
         return True
@@ -94,7 +79,7 @@ def check_estoque(user):
 
 @register.filter()
 def check_movimenta_estoque(user):
-    perms = ['movimentoestoque', 'all_entradas', 'all_saidas', 'all_transferencias' ]
+    perms = ['estoque.view_movimentoestoque']
     check = any(item in perms for item in user.get_all_permissions())
     if check or user.is_superuser:
         return True

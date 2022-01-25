@@ -292,7 +292,7 @@ class ConfiguracaoNotaFiscal(models.Model):
         default_permissions = ()
         verbose_name = "Configuração NF-e"
         permissions = (
-            ("configurar_nfe", "Pode modificar configuração de NF-e"),
+            ("configurarnfe", "Pode modificar configuração de NF-e"),
         )
 
     @property

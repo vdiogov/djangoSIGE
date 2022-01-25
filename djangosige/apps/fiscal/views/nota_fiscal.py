@@ -370,7 +370,7 @@ class ConfiguracaoNotaFiscalView(FormValidationMessageMixin, CustomTemplateView)
     template_name = 'fiscal/nota_fiscal/nota_fiscal_config.html'
     success_url = reverse_lazy('fiscal:configuracaonotafiscal')
     success_message = "Emissão de NF-e configurada"
-    permission_codename = 'configurar_nfe'
+    permission_codename = 'configurarnfe'
 
     def get_context_data(self, **kwargs):
         context = super(ConfiguracaoNotaFiscalView,

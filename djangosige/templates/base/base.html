@@ -200,7 +200,7 @@
                                     </li>
                                     {% endif %}
 
-                                    {% if unidade in user.get_all_permissions or user.is_superuser %}
+                                    {% if 'cadastro.view_unidade' in user.get_all_permissions or user.is_superuser %}
                                     <li>
                                         <a href="{% url 'cadastro:listaunidadesview' %}">
                                             Unidades
@@ -208,7 +208,7 @@
                                     </li>
                                     {% endif %}
 
-                                    {% if marca in user.get_all_permissions or user.is_superuser %}
+                                    {% if 'cadastro.view_marca' in user.get_all_permissions or user.is_superuser %}
                                     <li>
                                         <a href="{% url 'cadastro:listamarcasview' %}">
                                             Marcas
@@ -231,7 +231,7 @@
                         {% endif %}
                         <ul class="ml-menu">
 
-                            {% if orcamentovenda in user.get_all_permissions or user.is_superuser %}
+                            {% if 'vendas.view_orcamentovenda' in user.get_all_permissions or user.is_superuser %}
                             <li>
                                 <a href="{% url 'vendas:listaorcamentovendaview' %}">
                                     Orçamentos de venda
@@ -239,7 +239,7 @@
                             </li>
                             {% endif %}
 
-                            {% if pedidovenda in user.get_all_permissions or user.is_superuser %}
+                            {% if 'vendas.view_pedidovenda' in user.get_all_permissions or user.is_superuser %}
                             <li>
                                 <a href="{% url 'vendas:listapedidovendaview' %}">
                                     Pedidos de venda
@@ -247,7 +247,7 @@
                             </li>
                             {% endif %}
 
-                            {% if condicaopagamento in user.get_all_permissions or user.is_superuser %}
+                            {% if 'vendas.view_condicaopagamento' in user.get_all_permissions or user.is_superuser %}
                             <li>
                                 <a href="{% url 'vendas:listacondicaopagamentoview' %}">
                                     Condições de pagamento
@@ -269,7 +269,7 @@
 
                         <ul class="ml-menu">
 
-                            {% if orcamentocompra in user.get_all_permissions or user.is_superuser %}
+                            {% if 'compras.view_orcamentocompra' in user.get_all_permissions or user.is_superuser %}
                             <li>
                                 <a href="{% url 'compras:listaorcamentocompraview' %}">
                                     Orçamentos de Compra
@@ -277,7 +277,7 @@
                             </li>
                             {% endif %}
 
-                            {% if pedidocompra in user.get_all_permissions or user.is_superuser %}
+                            {% if 'compras.view_pedidocompra' in user.get_all_permissions or user.is_superuser %}
                             <li>
                                 <a href="{% url 'compras:listapedidocompraview' %}">
                                     Pedidos de Compra
@@ -285,7 +285,7 @@
                             </li>
                             {% endif %}
                             
-                            {% if condicaopagamento in user.get_all_permissions or user.is_superuser %}
+                            {% if 'vendas.view_condicaopagamento' in user.get_all_permissions or user.is_superuser %}
                             <li>
                                 <a href="{% url 'vendas:listacondicaopagamentoview' %}">
                                     Condições de pagamento
@@ -317,7 +317,7 @@
 
                                 <ul class="ml-menu">
 
-                                    {% if notafiscalsaida in user.get_all_permissions or user.is_superuser %}
+                                    {% if 'fiscal.view_notafiscalsaida' in user.get_all_permissions or user.is_superuser %}
                                     <li>
                                         <a href="{% url 'fiscal:listanotafiscalsaidaview' %}">
                                             Notas Fiscais
@@ -325,7 +325,7 @@
                                     </li>
                                     {% endif %}
 
-                                    {% if notafiscalentrada in user.get_all_permissions or user.is_superuser %}
+                                    {% if 'fiscal.view_notafiscalentrada' in user.get_all_permissions or user.is_superuser %}
                                     <li>
                                         <a href="{% url 'fiscal:listanotafiscalentradaview' %}">
                                             Notas de Fornecedores
@@ -333,7 +333,7 @@
                                     </li>
                                     {% endif %}
 
-                                    {% if configurar_nfe in user.get_all_permissions or user.is_superuser %}
+                                    {% if 'fiscal.configurarnfe' in user.get_all_permissions or user.is_superuser %}
                                     <li>
                                         <a href="{% url 'fiscal:configuracaonotafiscal' %}">
                                             Configuração NF-e
@@ -344,7 +344,7 @@
                                 </ul>
                             </li>
 
-                            {% if naturezaoperacao in user.get_all_permissions or user.is_superuser %}
+                            {% if 'fiscal.view_naturezaoperacao' in user.get_all_permissions or user.is_superuser %}
                             <li>
                                 <a href="{% url 'fiscal:listanaturezaoperacaoview' %}">
                                     Natureza da operação
@@ -352,7 +352,7 @@
                             </li>
                             {% endif %}
 
-                            {% if grupofiscal in user.get_all_permissions or user.is_superuser %}
+                            {% if 'fiscal.view_grupofiscal' in user.get_all_permissions or user.is_superuser %}
                             <li>
                                 <a href="{% url 'fiscal:listagrupofiscalview' %}">
                                     Grupo fiscal
@@ -369,7 +369,7 @@
 
                                 <ul class="ml-menu">
                                     
-                                    {% if consultar_cadastro in user.get_all_permissions or user.is_superuser %}
+                                    {% if 'fiscal.consultar_cadastro' in user.get_all_permissions or user.is_superuser %}
                                     <li>
                                         <a href="{% url 'fiscal:consultarcadastro' %}">
                                             Consultar cadastro
@@ -377,7 +377,7 @@
                                     </li>
                                     {% endif %}
 
-                                    {% if inutilizar_notafiscal in user.get_all_permissions or user.is_superuser %}
+                                    {% if 'fiscal.inutilizar_notafiscal' in user.get_all_permissions or user.is_superuser %}
                                     <li>
                                         <a href="{% url 'fiscal:inutilizarnotas' %}">
                                             Inutilizar notas
@@ -385,7 +385,7 @@
                                     </li>
                                     {% endif %}
 
-                                    {% if consultar_notafiscal in user.get_all_permissions or user.is_superuser %}
+                                    {% if 'fiscal.consultar_notafiscal' in user.get_all_permissions or user.is_superuser %}
                                     <li>
                                         <a href="{% url 'fiscal:consultarnota' %}">
                                             Consultar nota
@@ -393,7 +393,7 @@
                                     </li>
                                     {% endif %}
 
-                                    {% if baixar_notafiscal in user.get_all_permissions or user.is_superuser %}
+                                    {% if 'fiscal.baixar_notafiscal' in user.get_all_permissions or user.is_superuser %}
                                     <li>
                                         <a href="{% url 'fiscal:baixarnota' %}">
                                             Baixar nota
@@ -401,7 +401,7 @@
                                     </li>
                                     {% endif %}
 
-                                    {% if manifestacao_destinatario in user.get_all_permissions or user.is_superuser %}
+                                    {% if 'fiscal.manifestacao_destinatario' in user.get_all_permissions or user.is_superuser %}
                                     <li>
                                         <a href="{% url 'fiscal:manifestacaodestinatario' %}">
                                             Manifestação do destinatário
@@ -426,7 +426,7 @@
 
                         <ul class="ml-menu">
 
-                            {% if planocontasgrupo in user.get_all_permissions or user.is_superuser %}
+                            {% if 'financeiro.view_planocontasgrupo' in user.get_all_permissions or user.is_superuser %}
                             <li>
                                 <a href="{% url 'financeiro:planocontasview' %}">
                                     Plano de contas
@@ -434,7 +434,7 @@
                             </li>
                             {% endif %}
 
-                            {% if acesso_fluxodecaixa in user.get_all_permissions or user.is_superuser %}
+                            {% if 'financeiro.view_lancamento' in user.get_all_permissions or user.is_superuser %}
                             <li>
                                 <a href="{% url 'financeiro:fluxodecaixaview' %}">
                                     Fluxo de caixa
@@ -442,7 +442,7 @@
                             </li>
                             {% endif %}
 
-                            {% if lancamento in user.get_all_permissions or user.is_superuser %}
+                            {% if 'financeiro.view_lancamento' in user.get_all_permissions or user.is_superuser %}
                             <li>
                                 <a href="{% url 'financeiro:listalancamentoview' %}">
                                     Lançamentos
@@ -451,59 +451,40 @@
                             {% endif %}
 
                             <li>
-                            
-                                {% if user|check_fin_entradas %}
                                 <a href="javascript:void(0);" class="menu-toggle">
                                     Entradas
                                 </a>
-                                {% endif %}
                                 <ul class="ml-menu">
 
-                                    {% if all_entradas in user.get_all_permissions or user.is_superuser %}
                                     <li>
                                         <a href="{% url 'financeiro:listarecebimentosview' %}">
                                             Recebimentos
                                         </a>
                                     </li>
-                                    {% endif %}
-
-                                    {% if all_contasreceber in user.get_all_permissions or user.is_superuser %}
                                     <li>
                                         <a href="{% url 'financeiro:listacontareceberview' %}">
                                             Contas a receber
                                         </a>
                                     </li>
-                                    {% endif %}
 
                                 </ul>
                             </li>
 
                             <li>
-
-                                {% if user|check_fin_saidas %}
                                 <a href="javascript:void(0);" class="menu-toggle">
                                     Saidas
                                 </a>
-                                {% endif %}
-                                
                                 <ul class="ml-menu">
-
-                                    {% if all_contasreceber in user.get_all_permissions or user.is_superuser %}
                                     <li>
                                         <a href="{% url 'financeiro:listapagamentosview' %}">
                                             Pagamentos
                                         </a>
                                     </li>
-                                    {% endif %}
-
-                                    {% if all_contaspagar in user.get_all_permissions or user.is_superuser %}
                                     <li>
                                         <a href="{% url 'financeiro:listacontapagarview' %}">
                                             Contas a pagar
                                         </a>
                                     </li>
-                                    {% endif %}
-
                                 </ul>
                             </li>
 
@@ -521,7 +502,7 @@
 
                         <ul class="ml-menu">
 
-                            {% if consultar_estoque in user.get_all_permissions or user.is_superuser %}
+                            {% if 'estoque.consultarestoque' in user.get_all_permissions or user.is_superuser %}
                             <li>
                                 <a href="{% url 'estoque:consultaestoqueview' %}">
                                     Consultar estoque
@@ -529,7 +510,7 @@
                             </li>
                             {% endif %}
 
-                            {% if localestoque in user.get_all_permissions or user.is_superuser %}
+                            {% if 'estoque.view_localestoque' in user.get_all_permissions or user.is_superuser %}
                             <li>
                                 <a href="{% url 'estoque:listalocalview' %}">
                                     Locais de estoque
@@ -546,39 +527,26 @@
                                 {% endif %}
 
                                 <ul class="ml-menu">
-
-                                    {% if movimentoestoque in user.get_all_permissions or user.is_superuser %}
                                     <li>
                                         <a href="{% url 'estoque:listamovimentoestoqueview' %}">
                                             Todas movimentações
                                         </a>
                                     </li>
-                                    {% endif %}
-
-                                    {% if all_entradas in user.get_all_permissions or user.is_superuser %}
                                     <li>
                                         <a href="{% url 'estoque:listaentradasestoqueview' %}">
                                             Entradas
                                         </a>
                                     </li>
-                                    {% endif %}
-
-                                    {% if all_saidas in user.get_all_permissions or user.is_superuser %}
                                     <li>
                                         <a href="{% url 'estoque:listasaidasestoqueview' %}">
                                             Saídas
                                         </a>
                                     </li>
-                                    {% endif %}
-
-                                    {% if all_transferencias in user.get_all_permissions or user.is_superuser %}
                                     <li>
                                         <a href="{% url 'estoque:listatransferenciasestoqueview' %}">
                                             Transferências
                                         </a>
                                     </li>
-                                    {% endif %}
-
                                 </ul>
                             </li>
                         </ul>

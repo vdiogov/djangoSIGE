@@ -12,7 +12,7 @@ class ConsultaEstoqueView(CustomListView):
     template_name = "estoque/consulta/consulta_estoque.html"
     success_url = reverse_lazy('estoque:consultaestoqueview')
     context_object_name = 'produtos_filtrados'
-    permission_codename = 'consultar_estoque'
+    permission_codename = 'consultarestoque'
 
     def get_context_data(self, **kwargs):
         context = super(ConsultaEstoqueView, self).get_context_data(**kwargs)
